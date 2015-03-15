@@ -1,0 +1,37 @@
+﻿@model Dictionary<string,string>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Font Awesome Generator</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+                <th>Glyph</th>
+                <th>Mapping</th>
+                <th>Icon</th>
+            </tr>
+            @foreach (var glyph in Model)
+            {
+                <tr>
+                    <td>
+                        @glyph.Key.Replace(":before","")
+                    </td>
+                    <td>
+                        @glyph.Value
+                    </td>
+                    <td>
+                       <img src="@Url.Content(String.Format("~/Glyphs/{0}.png", glyph.Key.Replace(":before","").TrimStart('.')))" />
+                    </td>
+                </tr>
+                
+            }
+        </table>
+        
+    </div>
+</body>
+</html>
